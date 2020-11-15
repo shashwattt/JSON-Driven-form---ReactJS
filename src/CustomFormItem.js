@@ -1,7 +1,6 @@
 import React from "react";
 
 const createElement = ({ type, prps }, onChange) => {
-  console.log("onChange", onChange);
   switch (type) {
     case "text":
       return (
@@ -17,7 +16,7 @@ const createElement = ({ type, prps }, onChange) => {
           {prps &&
             prps.itms &&
             prps.itms.map((itm, idx) => (
-              <React.Fragment>
+              <React.Fragment key={itm.val + idx}>
                 <input
                   type="radio"
                   id={itm.val + idx}
@@ -25,7 +24,7 @@ const createElement = ({ type, prps }, onChange) => {
                   value={itm.val}
                   onChange={e => onChange(e.target.value)}
                 />
-                <label for={itm.val + idx}>{itm.lbl}</label>
+                <label htmlFor={itm.val + idx}>{itm.lbl}</label>
               </React.Fragment>
             ))}
         </div>
